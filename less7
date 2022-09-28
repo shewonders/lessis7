@@ -1,0 +1,113 @@
+#task 1
+# class Matrix:
+#     def __init__(self, length, mtr_cont):
+#         self.length = length
+#         self.mtr_cont = mtr_cont
+#
+#     def __str__(self, length, mtr_cont):
+#         mtr_cont1 = mtr_cont
+#         for el in mtr_cont:
+#             print(*el, sep="  ")
+#
+#     def __add__(self, length, mtr_cont, mtr2_cont):
+#         for i in mtr2_cont:
+#             for j in mtr_cont:
+#                 for el in i:
+#                     for el1 in j:
+#                         sum = [el + el1 for (el, el1) in zip(i, j)]
+#                 print(*sum, sep="  ")
+#                 break
+# Matrix1 = Matrix(3, [[1,2,3], [3,4,5], [4,6,7]])
+# Matrix1.__str__(3, [[1,2,3], [3,4,5], [4,6,7]])
+#
+# Matrix2 = Matrix(3, [[4,6,7], [-1,3,5], [0,-5,7]])
+# Matrix2.__add__(3, [[1,2,3], [3,4,5], [4,6,7]], [[4,6,7], [-1,3,5], [0,-5,7]])
+
+#task2 (непонятно, зачем нам при таких разных формулах вообще общий класс,
+# чего универсального тут прописывать?)
+
+
+# class Clothes:
+#     def __init__(self, para):
+#         self.para = para
+#         pass
+#     @property
+#     def para(self):
+#         return self.__para
+#     @para.setter
+#     def para(self, para):
+#         if para < 0:
+#             self.__para = abs(para)
+#             print(f"We assume you meant {abs(para)}")
+#         else:
+#             self.__para = para
+# class Coat(Clothes):
+#     def Coat_vol(self, para):
+#         print(f"Your total fabric volume is: {'{:.2f}'.format(para / 6.5 + 0.5)} m")
+#
+# class Suit(Clothes):
+#     def Suit_vol(self, para):
+#         print(f"Your total fabric volume is: {'{:.2f}'.format(2 * para + 0.3)} m")
+
+#
+# Suit1 = Suit(-6)
+# Coat1 = Coat(-5)
+# Coat1.Coat_vol(-7) # так и не поняла, как второй раз не вписывать переменную сюда
+# Suit1.Suit_vol(-5)
+
+# from abc import ABC, abstractmethod #тоже так и не поняла, зачем это нужно было(
+# class MyAbstractClass(ABC):
+#     @abstractmethod
+#     def vol(self, para):
+#         print(f"The total volume of fabric is: {para*3} m")
+# class Skirt(MyAbstractClass):
+#     def __init__(self, para):
+#         pass
+#     def vol(self, para):
+#         print(f"The total volume of fabric is: {para*3} m")
+# Skirt1 = Skirt(45)
+# li = [Skirt1]
+# for el in li:
+#     print(el.vol(45))
+
+
+# Task3:
+class Cell:
+    def __init__(self, N):
+        self.N = N
+    # def __add__(self, N):
+    #     other = int(input("Type the number of parts in another cell for addition "))
+    #     print(f"Through addition you get a cell of {N + other} parts")
+    # def __sub__(self, N):
+    #     other = int(input("Type the number of parts in another cell for subtraction "))
+    #     if N - other < 0:
+    #         other = int(input(f"Type a number of parts in another cell smaller than {N}"))
+    #         print(f"Through subtraction you get a cell of {N - other} parts")
+    #     else:
+    #         print(f"Through subtraction you get a cell of {N - other} parts")
+    # def __mul__(self, N):
+    #     other = int(input("Type the number of parts in another cell for multiplication "))
+    #     print(f"Through multiplication you get a cell of {N * other} parts")
+    # def __truediv__(self, N):
+    #     other = int(input("Type the number of parts in another cell for truediv "))
+    #     print(f"Through truediv you get a cell of {N // other} parts")
+    def makeorder(self, N, c):
+        self.N = int(N)
+        self.c = int(c)
+        str1 = ""
+        str2 = ""
+        for i in range(0, (N // c)):
+            str1 += "*" * c + "\n" #е совсем поняла, нужно было на строки или так и вывести /n
+            str2 += "*" * c + "/n"
+        str1 = str1 + "*" * (N % c)
+        str2 = str2 + "*" * (N % c)
+        print(str1)
+        print(str2)
+
+Cell1 = Cell(5)
+# Cell1.__add__(5)
+# Cell1.__sub__(5)
+# Cell1.__mul__(5)
+# Cell1.__truediv__(2)
+Cell1.makeorder(16,3)
+
